@@ -1,0 +1,36 @@
+name: Report a problem with a lesson
+description: Something in a lesson is wrong, unclear, or broken.
+title: "[Lesson] "
+labels: ["lesson-feedback"]
+body:
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson URL
+      description: Filled in for you when you use the button on a lesson.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem?
+      options:
+        - Something is wrong
+        - Something is unclear
+        - Code doesn't work
+        - Broken page, link, or diagram
+        - Suggestion
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: The text in question
+      description: The sentence or code you mean. If you selected text on the lesson before clicking the button, it is already here.
+      render: text
+  - type: textarea
+    id: details
+    attributes:
+      label: What's the problem, and what did you expect?
+    validations:
+      required: true

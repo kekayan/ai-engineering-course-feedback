@@ -1,0 +1,19 @@
+# Creates the labels the course site uses. Runs on every push to main, and can be run by hand.
+name: Labels
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  issues: write
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create or update labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh label create comments --color 0E8A16 --description "Lesson comment thread (Utterances)" --force
+          gh label create lesson-feedback --color D93F0B --description "Problem reported from a lesson" --force
